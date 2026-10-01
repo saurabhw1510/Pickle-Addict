@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Zap, Users, Target, Heart } from "lucide-react";
+import { motionTiming } from "../data/motion";
 
 export function Ball({ className = "" }) {
   return (
@@ -51,32 +52,65 @@ export function Reveal({ children, className = "", delay = 0 }) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: reduced ? 1 : 0, y: reduced ? 0 : 28 }}
+      initial={{ opacity: reduced ? 1 : 0, y: reduced ? 0 : 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}
       transition={{
-        duration: reduced ? 0 : 0.65,
-        delay,
-        ease: [0.22, 1, 0.36, 1],
+        duration: reduced ? 0 : motionTiming.reveal,
+        delay: reduced ? 0 : delay,
+        ease: motionTiming.ease,
       }}
     >
       {children}
     </motion.div>
   );
 }
+export function AnimatedImage({ className = "", ...props }) {
+  const reduced = useReducedMotion();
+  return (
+    <motion.img
+      {...props}
+      className={`animated-image ${className}`}
+      initial={{ opacity: reduced ? 1 : 0, scale: reduced ? 1 : 0.97 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: reduced ? 0 : 0.8, ease: motionTiming.ease }}
+    />
+  );
+}
+
+const MotionLink = motion.create(Link);
+export function StaggerLink({ index = 0, children, ...props }) {
+  const reduced = useReducedMotion();
+  return (
+    <MotionLink
+      {...props}
+      initial={{ opacity: reduced ? 1 : 0, y: reduced ? 0 : 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: reduced ? 0 : motionTiming.reveal,
+        delay: reduced ? 0 : index * motionTiming.stagger,
+        ease: motionTiming.ease,
+      }}
+    >
+      {children}
+    </MotionLink>
+  );
+}
 export function AnimatedText({ lines, className = "" }) {
   const reduced = useReducedMotion();
   return (
-    <h1 className={`display ${className}`}>
+    <h1 className={`display ${className}`} aria-label={lines.join(" ")}>
       {lines.map((line, index) => (
-        <span className="text-line" key={line}>
+        <span className="text-line" key={line} aria-hidden="true">
           <motion.span
             initial={{ y: reduced ? 0 : "105%" }}
             animate={{ y: 0 }}
             transition={{
-              duration: reduced ? 0 : 0.75,
-              delay: index * 0.11,
-              ease: [0.22, 1, 0.36, 1],
+              duration: reduced ? 0 : motionTiming.reveal,
+              delay: reduced ? 0 : index * motionTiming.stagger,
+              ease: motionTiming.ease,
             }}
           >
             {line}

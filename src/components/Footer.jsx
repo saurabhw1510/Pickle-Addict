@@ -1,10 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Logo } from "./Navbar";
 import { brand, navigation } from "../data/content";
 import { Reveal } from "./UI";
 
 export default function Footer() {
+  const { pathname } = useLocation();
+  if (pathname === "/")
+    return (
+      <footer className="footer compact-footer">
+        <div className="compact-footer-row">
+          <Logo />
+          <Link to="/contact">
+            Get in touch <ArrowUpRight size={16} aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Pickle Addict.</span>
+          <span>MADE FOR THE LOVE OF THE GAME ↗</span>
+        </div>
+      </footer>
+    );
   return (
     <footer className="footer">
       <Reveal className="footer-top">

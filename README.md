@@ -1,6 +1,15 @@
 # Pickle Addict
 
-Responsive static React + Vite website with Tailwind CSS and Motion. Routes: `/`, `/events`, `/atp`, `/coaching`, `/partners`, `/vault`, `/about`, `/stories`, and `/contact`.
+Responsive static React + Vite website with Tailwind CSS and Motion. Four main navigation sections: Events, Coaching, Partners, and About. The logo links home; Contact remains a separate action.
+
+- Events: `/events`, `/events/nights`, `/events/atp`, `/events/photos`.
+- Coaching and Partners: `/coaching`, `/partners`.
+- About: `/about`, `/about/stories`, `/about/vault`.
+- Home and enquiries: `/`, `/contact`.
+
+Legacy `/atp`, `/stories`, and `/vault` links redirect to their nested destinations, preserving query parameters and hashes. Event photos are scoped to event categories; the full archive remains available under About.
+
+The mobile homepage focuses on the After Hours identity, community statistics, the next night, and four compact section links. Detailed introductions, feature grids, and repeated promotional content no longer extend the landing page. The homepage also uses a compact footer and CTA.
 
 The site follows the Pickle Addict flow: community home, tournaments, ATP Service Points, coaching and Playmakers Academy, brands and partners, a filterable photo vault, founder journey, and stories. A shared Play / Compete / Train / Partner CTA appears on every page. Enquiry links preselect the appropriate contact subject; they do not create a booking or registration.
 
@@ -33,7 +42,7 @@ Run `npm run images:optimize` after replacing source JPEGs to generate 640, 1280
 
 Fonts are bundled locally. Non-hero images lazy-load. The contact form uses native validation and displays a local success state without sending or storing data. Contact details remain placeholders; community statistics and partner names come from the supplied brief. Social entries are labeled placeholders until real destinations are available.
 
-Motion respects reduced-motion preferences, including static counters and disabled parallax. Navigation includes keyboard focus states, an Escape-dismissable mobile menu with focus wrapping, and a skip link.
+Shared animation timing lives in `src/data/motion.js`: short staggered text entrances, 18px section reveals, and page fades use one easing curve. `src/refinements.css` adds consistent image and link hover treatments. Reduced-motion mode disables nonessential movement and delays and uses static counters. Navigation includes keyboard focus states, an Escape-dismissable mobile menu with focus wrapping, and a skip link.
 
 ## Quality checks
 

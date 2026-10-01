@@ -1,6 +1,11 @@
 import { images, imageSources } from "../data/content";
 import { coachingPrograms, progression } from "../data/flow";
-import { Button, Reveal, SectionHeading } from "../components/UI";
+import {
+  AnimatedImage,
+  Button,
+  Reveal,
+  SectionHeading,
+} from "../components/UI";
 import { PageHero } from "../components/Flow";
 
 export default function Coaching() {
@@ -12,12 +17,14 @@ export default function Coaching() {
         description="From your first rally to a more confident game. Find the right way to train."
       />
       <section className="wrap flow-columns coaching-intro">
-        <img
-          src={images.hero}
-          srcSet={imageSources(images.hero)}
-          sizes="(max-width: 767px) 100vw, 50vw"
-          alt="Player focused on returning a pickleball shot"
-        />
+        <Reveal>
+          <AnimatedImage
+            src={images.hero}
+            srcSet={imageSources(images.hero)}
+            sizes="(max-width: 767px) 100vw, 50vw"
+            alt="Player focused on returning a pickleball shot"
+          />
+        </Reveal>
         <Reveal>
           <p className="eyebrow">100+ PLAYERS TRAINED</p>
           <h2 className="display">

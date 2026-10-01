@@ -3,12 +3,14 @@ import AxeBuilder from "@axe-core/playwright";
 const routes = [
   "/",
   "/events",
-  "/atp",
+  "/events/nights",
+  "/events/atp",
+  "/events/photos",
   "/coaching",
   "/partners",
-  "/vault",
+  "/about/vault",
   "/about",
-  "/stories",
+  "/about/stories",
   "/contact",
 ];
 
@@ -120,7 +122,7 @@ test("reduced motion and accessibility", async ({ page }) => {
   await expect(page.locator(".stat").first()).toContainText("500+");
   expect(
     await page
-      .locator(".hero-sticker")
+      .locator(".hero-photo img")
       .evaluate((element) => getComputedStyle(element).animationName),
   ).toBe("none");
   await page.screenshot({
@@ -128,6 +130,13 @@ test("reduced motion and accessibility", async ({ page }) => {
     fullPage: true,
   });
   await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload();
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    await new Promise((resolve) =>
+      requestAnimationFrame(() => requestAnimationFrame(resolve)),
+    );
+  });
   await page.screenshot({
     path: "test-results/home-mobile.png",
     fullPage: true,

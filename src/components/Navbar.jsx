@@ -72,7 +72,7 @@ export default function Navbar() {
         <Logo />
         <nav className="desktop-nav" aria-label="Main navigation">
           {navigation.map((link) => (
-            <NavLink key={link.to} to={link.to} end>
+            <NavLink key={link.to} to={link.to}>
               {link.label}
             </NavLink>
           ))}
@@ -105,7 +105,7 @@ export default function Navbar() {
             transition={{ duration: reduced ? 0 : 0.2 }}
           >
             {navigation.map((link, index) => (
-              <NavLink to={link.to} key={link.to} end>
+              <NavLink to={link.to} key={link.to}>
                 <span>0{index + 1}</span>
                 {link.label}
               </NavLink>

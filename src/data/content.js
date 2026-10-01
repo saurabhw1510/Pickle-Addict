@@ -20,14 +20,10 @@ export const brand = {
   hours: "Every day · 6:00 AM – 10:00 PM",
 };
 export const navigation = [
-  { to: "/", label: "Home" },
   { to: "/events", label: "Events" },
-  { to: "/atp", label: "ATP" },
   { to: "/coaching", label: "Coaching" },
   { to: "/partners", label: "Partners" },
-  { to: "/vault", label: "The Vault" },
   { to: "/about", label: "About" },
-  { to: "/stories", label: "Stories" },
 ];
 export const features = [
   {

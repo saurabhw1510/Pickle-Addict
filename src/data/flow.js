@@ -37,6 +37,10 @@ export const partners = [
 ];
 export const coachingPrograms = [
   {
+    title: "Clinics",
+    text: "Focused practice on a specific part of your game. Upcoming clinic dates and formats will be announced here.",
+  },
+  {
     title: "Pickle Addict coaching",
     text: "Start with the fundamentals, then develop the skills to feel at home on court.",
   },
@@ -104,6 +108,8 @@ export const gallery = [
   },
 ];
 export const storyCategories = [
+  "Community stories",
+  "Testimonials",
   "Tournament announcements",
   "Winners",
   "Player stories",

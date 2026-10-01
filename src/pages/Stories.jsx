@@ -26,7 +26,7 @@ export default function Stories() {
           ))}
         </div>
         <div aria-live="polite">
-          <EmptyState title={category}>
+          <EmptyState key={category} title={category}>
             Our first {category.toLowerCase()} updates will appear here. Check
             back for the latest from Pickle Addict.
           </EmptyState>

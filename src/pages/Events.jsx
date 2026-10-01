@@ -15,6 +15,28 @@ export default function Events() {
         <a href="#results">Results & champions</a>
         <a href="#galleries">Galleries</a>
       </nav>
+      <section className="wrap event-categories" aria-label="Event categories">
+        <Reveal>
+          <article className="feature-card">
+            <p className="eyebrow">AFTER HOURS / COMMUNITY</p>
+            <h2>PickleAddict Nights</h2>
+            <p>Our after-hours home for good games and great company.</p>
+            <Button to="/events/nights" variant="text">
+              Explore the Nights
+            </Button>
+          </article>
+        </Reveal>
+        <Reveal delay={0.07}>
+          <article className="feature-card">
+            <p className="eyebrow">ADDICTED TO PICKLEBALL</p>
+            <h2>ATP Events</h2>
+            <p>Service Points, past editions, champions, and highlights.</p>
+            <Button to="/events/atp" variant="text">
+              Explore ATP Events
+            </Button>
+          </article>
+        </Reveal>
+      </section>
       <section id="upcoming" className="wrap section-space">
         <SectionHeading eyebrow="NEXT ON COURT">
           UPCOMING TOURNAMENTS.
@@ -52,7 +74,7 @@ export default function Events() {
           <p className="eyebrow">BEYOND THE SCOREBOARD</p>
           <h2 className="display">RELIVE THE RALLY.</h2>
           <p>Explore the photos already in our collection.</p>
-          <Button to="/vault?category=Tournament%20photos">
+          <Button to="/events/photos?category=Tournament%20photos">
             View Event Photos
           </Button>
         </Reveal>

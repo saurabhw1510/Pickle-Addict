@@ -61,7 +61,7 @@ export default function ATP() {
         <EmptyState title="ATP highlights are coming soon.">
           Photo albums and video highlights will be added once available.
         </EmptyState>
-        <Button to="/vault?category=ATP%20moments" variant="text">
+        <Button to="/events/photos?category=ATP%20moments" variant="text">
           Explore ATP Moments
         </Button>
       </section>
